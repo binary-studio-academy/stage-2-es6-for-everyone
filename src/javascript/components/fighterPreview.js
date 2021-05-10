@@ -7,23 +7,72 @@ export function createFighterPreview(fighter, position) {
     className: `fighter-preview___root ${positionClassName}`,
   });
 
-  // todo: show fighter info (image, name, health, etc.)
+  if (fighter) {
+    const imageElement = createFighterPreviewImage(fighter);
+    fighterElement.append(imageElement);
+
+    const fighterInfo = createFighterInfo(fighter);
+    fighterElement.append(fighterInfo);
+    return fighterElement;
+  }
 
   return fighterElement;
 }
 
 export function createFighterImage(fighter) {
   const { source, name } = fighter;
-  const attributes = { 
-    src: source, 
+  const attributes = {
+    src: source,
     title: name,
-    alt: name 
+    alt: name
   };
-  const imgElement = createElement({
+  return createElement({
     tagName: 'img',
     className: 'fighter-preview___img',
     attributes,
   });
+}
 
-  return imgElement;
+function createFighterPreviewImage(fighter) {
+  const { source, name } = fighter;
+  const attributes = {
+    src: source,
+    title: name,
+    alt: name
+  };
+  return createElement({
+    tagName: 'img',
+    className: 'fighter-preview___img--small',
+    attributes,
+  });
+}
+
+function createFighterInfo(fighter) {
+  const previewContainerElement = createElement({
+    tagName: 'div',
+    className: 'fighter-preview___info',
+  });
+
+  const nameElement = createElement({
+    tagName: 'h3',
+    className: 'fighter-preview___name',
+  });
+  const { name } = fighter;
+  nameElement.innerText = name;
+  previewContainerElement.append(nameElement);
+
+  const fighterPropMap = new Map();
+  fighterPropMap.set('health', fighter['health']);
+  fighterPropMap.set('attack', fighter['attack']);
+  fighterPropMap.set('defense', fighter['defense']);
+  fighterPropMap.forEach((propValue, propName) => {
+    const itemElement = createElement({
+      tagName: 'p',
+      className: `fighter-preview__${propName}`,
+    });
+    itemElement.innerText = `${propName}: ${propValue}`;
+    previewContainerElement.append(itemElement);
+  });
+
+  return previewContainerElement;
 }

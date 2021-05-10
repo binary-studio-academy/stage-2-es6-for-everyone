@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   margin: 40px;
-}
+ }
 
 .preview-container___versus-block {
   display: flex;
@@ -28,9 +28,24 @@
   font-size: 22px;
   cursor: pointer;
   font-weight: bold;
-  box-shadow: 6px 6px 7px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 6px 6px 7px 0 rgba(0, 0, 0, 0.75);
 }
 
 .preview-container___fight-btn.disabled {
   opacity: 0;
+}
+
+.fighter-preview___info {
+  text-align: center;
+  align-self: center;
+  min-height: 150px;
+  min-width: 150px;
+  color: darkred;
+  background-color: burlywood;
+  border: 2px solid darkred;
+ }
+
+.fighter-preview___img--small {
+  max-height: 250px;
+  max-width: inherit;
 }
