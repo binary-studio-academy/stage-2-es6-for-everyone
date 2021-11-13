@@ -2,14 +2,10 @@ import { createFighters } from './components/fightersView';
 import { fighterService } from './services/fightersService';
 
 class App {
-  constructor() {
-    this.startApp();
-  }
-
   static rootElement = document.getElementById('root');
   static loadingElement = document.getElementById('loading-overlay');
 
-  async startApp() {
+  static async startApp() {
     try {
       App.loadingElement.style.visibility = 'visible';
 
