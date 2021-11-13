@@ -7,7 +7,7 @@ const SECURITY_HEADERS = {
     /*
      * For the development, you shouldn't use the remote data source, but set useMockAPI=true.
      * To test the application against the real dataset set useMockAPI=false.
-     * But to test the application you don't need to extend the GitHub rate limit to 5000 requests with the token
+     * But to test the application you don't need to extend the GitHub REST API rate limit to 5000 requests with the token
      */
     // authorization: 'token %github_token%'
   }
