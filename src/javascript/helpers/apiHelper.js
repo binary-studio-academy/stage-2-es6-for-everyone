@@ -15,7 +15,7 @@ const SECURITY_HEADERS = {
 
 const useMockAPI = true;
 
-export async function callApi(endpoint, method) {
+export async function callApi(endpoint, method = 'GET') {
   const url = BASE_API_URL + endpoint;
   const options = { method, ...SECURITY_HEADERS };
 

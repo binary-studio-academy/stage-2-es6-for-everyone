@@ -5,7 +5,7 @@ class FighterService {
 
   async getFighters() {
     try {
-      const apiResult = await callApi(this.#endpoint, 'GET');
+      const apiResult = await callApi(this.#endpoint);
       return apiResult;
     } catch (error) {
       throw error;
