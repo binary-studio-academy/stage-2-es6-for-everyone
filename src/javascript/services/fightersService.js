@@ -1,11 +1,11 @@
 import { callApi } from '../helpers/apiHelper';
 
 class FighterService {
+  #endpoint = 'fighters.json';
+
   async getFighters() {
     try {
-      const endpoint = 'fighters.json';
-      const apiResult = await callApi(endpoint, 'GET');
-
+      const apiResult = await callApi(this.#endpoint);
       return apiResult;
     } catch (error) {
       throw error;
