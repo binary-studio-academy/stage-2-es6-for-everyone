@@ -9,11 +9,12 @@ const SECURITY_HEADERS = {
      * To test the application against the real dataset set useMockAPI=false.
      * But to test the application you don't need to extend the GitHub REST API rate limit to 5000 requests with the token
      */
-    // authorization: 'token %github_token%'
+    // authorization: 'token %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%' // my token
+    // authorization: 'token %github_token'
   }
 };
 
-const useMockAPI = true;
+const useMockAPI = false;
 
 export async function callApi(endpoint, method = 'GET') {
   const url = BASE_API_URL + endpoint;

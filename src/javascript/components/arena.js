@@ -1,4 +1,5 @@
 import { createElement } from '../helpers/domHelper';
+import { fight } from './fight';
 import { createFighterImage } from './fighterPreview';
 
 export function renderArena(selectedFighters) {
@@ -8,6 +9,8 @@ export function renderArena(selectedFighters) {
   root.innerHTML = '';
   root.append(arena);
 
+  createArena(selectedFighters)
+  fight(selectedFighters[0], selectedFighters[1]);
   // todo:
   // - start the fight
   // - when fight is finished show winner
