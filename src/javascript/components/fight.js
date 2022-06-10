@@ -25,13 +25,9 @@ export async function fight(firstFighter, secondFighter) {
   window.addEventListener('keypress', event => {
     if (event.key === 'a' && !isFirstFighterInBlock && !isSecondFighterInBlock) {
       secondFighter.health -= getDamage(firstFighter, secondFighter);
-      // console.log('secondFighter', secondFighter.health);
+
       designBar(secondFighter, firstFightersMaxHealth, 'right');
-      // const indicator = Math.floor(secondFighter.health*100/firstFightersMaxHealth);
-      // document.querySelector('#right-fighter-indicator').style.width = indicator >= 0 ? `${indicator}%` : '0%';
-      // if (secondFighter.health <= 0) return new Promise((resolve) => {
-      //   resolve(showWinnerModal(firstFighter));
-      // });
+
       checkFightIsOver(firstFighter, secondFighter);
     }
   });
@@ -44,10 +40,9 @@ export async function fight(firstFighter, secondFighter) {
   window.addEventListener('keypress', event => {
     if (event.key === 'j' && !isSecondFighterInBlock && !isFirstFighterInBlock) {
       firstFighter.health -= getDamage(secondFighter, firstFighter);
-      // console.log('firstFighter', firstFighter.health);
+
       designBar(firstFighter, firstFightersMaxHealth, 'left');
-      // const indicator = Math.floor(firstFighter.health*100/secondFightersMaxHealth);
-      // document.querySelector('#left-fighter-indicator').style.width = indicator >= 0 ? `${indicator}%` : '0%';
+
       checkFightIsOver(secondFighter, firstFighter);
     }
   });
@@ -66,22 +61,23 @@ export async function fight(firstFighter, secondFighter) {
     else if (key === 'u' || key === 'i' || key === 'o')
       map2[key] = event.type === 'keydown';
 
-    // console.log('first', map1);
-    // console.log('second', map2);
-
     if (map1['q'] && map1['w'] && map1['e'] && criticalStrike1) {
       secondFighter.health -= 2*firstFighter.attack;
+
       designBar(secondFighter, secondFightersMaxHealth, 'right');
-      // document.querySelector('#right-fighter-indicator').style.width = `${Math.floor(secondFighter.health*100/secondFightersHealth)}%`;
+
       checkFightIsOver(firstFighter, secondFighter);
+
       criticalStrike1 = false;
       setTimeout(_ => { criticalStrike1 = true }, 10000);
     }
     if (map2['u'] && map2['i'] && map2['o'] && criticalStrike2) {
       firstFighter.health -= 2*secondFighter.attack;
+
       designBar(firstFighter, firstFightersMaxHealth, 'left');
-      // document.querySelector('#left-fighter-indicator').style.width = `${Math.floor(firstFighter.health*100/firstFightersHealth)}%`;
+
       checkFightIsOver(secondFighter, firstFighter);
+
       criticalStrike2 = false;
       setTimeout(_ => { criticalStrike2 = true }, 10000);
     }
@@ -91,7 +87,6 @@ export async function fight(firstFighter, secondFighter) {
   window.addEventListener('keyup', onkeyup);
 
   // return new Promise((resolve) => {
-  //   resolve(showWinnerModal(Fighter));
   //   // resolve the promise with the winner when fight is over
   // });
 }
@@ -106,7 +101,6 @@ export function getDamage(attacker, defender) {
 export function getHitPower(fighter) {
   const attack = fighter.attack;
   const criticalHitChance = Math.random() + 1;
-  // console.log('attack', criticalHitChance);
   const power = attack*criticalHitChance;
   return power;
   // return hit power
@@ -115,7 +109,6 @@ export function getHitPower(fighter) {
 export function getBlockPower(fighter) {
   const defense = fighter.defense;
   const dodgeChance = Math.random() + 1;
-  // console.log('defense', dodgeChance);
   const power = defense*dodgeChance;
   return power;
   // return block power

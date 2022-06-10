@@ -12,6 +12,7 @@ export function showWinnerModal(fighter) {
     bodyElement: bodyElement,
     onClose: _ => {
       fighterService.getFighterDetails(fighter._id).then(data => fighter.health = data.health);
+      
       const root = document.getElementById('root');
       root.innerHTML = '';
 
