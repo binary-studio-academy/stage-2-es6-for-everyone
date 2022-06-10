@@ -20,7 +20,7 @@ function createFighter(fighter, selectFighter) {
   const onClick = (event) => selectFighter(event, fighter._id);
 
   fighterElement.append(imageElement);
-  fighterElement.addEventListener('click', onClick, false);
+  fighterElement.addEventListener('click', onClick, true);
 
   return fighterElement;
 }
